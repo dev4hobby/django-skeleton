@@ -1,0 +1,9 @@
+{
+  "makefile.extensionOutputFolder": "./.vscode",
+  "[python]": {
+    "editor.tabSize": 4,
+    "editor.formatOnSave": false,
+    "editor.insertSpaces": true,
+  },
+  "python.formatting.provider": "black", 
+}
