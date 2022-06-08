@@ -5,16 +5,16 @@ services:
     container_name: django
     build:
       context: .
-      dockerfile: ./compose/django/Dockerfile
+      dockerfile: ./compose/django/Dockerfile.prod
     volumes:
-      - .:/app
+      - static_volume:/app/static
+      - media_volume:/app/media
     command:
       - /bin/sh
       - -c
       - |
-        python manage.py runserver 0.0.0.0:8000 --settings=app.settings_local
-    ports:
-      - "8000:8000"
+        gunicorn app.asgi:application -k \
+        uvicorn.workers.UvicornWorker -b 0.0.0.0:8000
     environment:
       - DJANGO_DB_HOST=mysql
     depends_on:
@@ -53,3 +53,17 @@ services:
       - "15672:15672"
     restart: unless-stopped
     platform: linux/x86_64
+  nginx:
+    container_name: nginx
+    build: ./compose/nginx
+    volumes:
+      - static_volume:/app/static
+      - media_volume:/app/media
+    ports:
+      - 80:80
+    depends_on:
+      - django
+
+volumes:
+  static_volume:
+  media_volume:

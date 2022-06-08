@@ -68,6 +68,10 @@ build-docker: ## Build the docker image.
 run-docker: ## Run the docker container.
 	docker-compose up -d
 
+.PHONY: run-docker-prod
+run-docker-prod:
+	docker-compose -f docker-compose.prod.yml up -d --build
+
 .PHONY: stop-docker
 stop-docker: ## Stop the docker container.
 	docker-compose stop
