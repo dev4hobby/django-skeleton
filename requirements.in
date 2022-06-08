@@ -1,0 +1,8 @@
+black
+pip-tools
+Django
+djangorestframework
+gunicorn
+uvicorn
+celery
+mysqlclient
