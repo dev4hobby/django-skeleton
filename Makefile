@@ -100,3 +100,12 @@ db-migrate: ## Migrate DB
 	@echo
 	python manage.py makemigrations
 	python manage.py migrate
+
+.PHONY: db-migrate-prod
+db-migrate-prod: ## Migrate DB
+	@echo
+	@echo "Migrating Production DB..."
+	@echo "================"
+	@echo
+	python manage.py makemigrations
+	python manage.py migrate --settings=config.settings_production
