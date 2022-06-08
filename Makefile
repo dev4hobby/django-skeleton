@@ -88,6 +88,8 @@ run-local: ## Run the local server.
 	@echo
 	@echo "Running MySQL partially"
 	docker-compose up -d mysql
+	docker-compose up -d redis
+	docker-compose up -d rabbitmq
 	python manage.py runserver 0.0.0.0:8086
 
 .PHONY: db-migrate
@@ -96,6 +98,5 @@ db-migrate: ## Migrate DB
 	@echo "Migrating DB..."
 	@echo "================"
 	@echo
-	docker-compose up -d mysql
 	python manage.py makemigrations
 	python manage.py migrate
