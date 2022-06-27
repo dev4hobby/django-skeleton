@@ -13,6 +13,12 @@ A template repository created to be used when implementing simple features in Dj
 
 ## Usage
 
+### Dependencies
+
+```bash
+make dep-sync
+```
+
 ### Local development
 
 ```bash
