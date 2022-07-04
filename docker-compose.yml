@@ -36,7 +36,7 @@ services:
       - MYSQL_USER=username
       - MYSQL_PASSWORD=password
       - MYSQL_ROOT_PASSWORD=password
-      - MYSQL_DATABASE=database
+      - MYSQL_DATABASE=db
     restart: unless-stopped
     platform: linux/x86_64
   redis:

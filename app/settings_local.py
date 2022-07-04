@@ -3,7 +3,7 @@ from app.settings import *
 DATABASES = {
     "default": {
         "ENGINE": "django.db.backends.mysql",
-        "NAME": "database",
+        "NAME": "db",
         "USER": "username",
         "PASSWORD": "password",
         "HOST": "mysql",
