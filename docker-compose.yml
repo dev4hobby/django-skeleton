@@ -32,13 +32,18 @@ services:
       - "3306:3306"
     expose:
       - 3306
+    volumes:
+      - ./db/mysql:/var/lib/mysql
     environment:
       - MYSQL_USER=username
       - MYSQL_PASSWORD=password
       - MYSQL_ROOT_PASSWORD=password
       - MYSQL_DATABASE=db
     restart: unless-stopped
-    platform: linux/x86_64
+    ## for Intel CPU
+    # platform: linux/x86_64
+    ## for Apple Silicon
+    platform: linux/amd64
   redis:
     image: redis:latest
     container_name: local_redis
