@@ -46,10 +46,16 @@ services:
       - "6379:6379"
     restart: unless-stopped
     platform: linux/x86_64
-  rabbitmq:
-    image: rabbitmq:3.10
-    container_name: local_rabbitmq
+  mongodb:
+    image: mongo:latest
+    container_name: local_mongodb
+    restart: always
     ports:
-      - "15672:15672"
-    restart: unless-stopped
-    platform: linux/x86_64
+      - "27017:27017"
+    volumes:
+      - ./db/mongodb:/data/db
+    environment:
+      - MONGO_INITDB_ROOT_USERNAME=root
+      - MONGO_INITDB_ROOT_PASSWORD=password
+      - MONGO_INITDB_DATABASE=db
+
